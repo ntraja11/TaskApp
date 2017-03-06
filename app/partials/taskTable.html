@@ -1,41 +1,41 @@
 <div class="container">
-	<div class="continer">
-		<div class="col-lg-3">
+	<div class="continer titleContainer">
+		<div class="title1">
 			<h4>Task Table</h4>
-		</div>	
-		<div class="col-lg-3">
-			<label class="selectLabel">Select Category</label>
-		</div>		
-    	<div class="col-lg-3">    		
-        	<select class="form-control" id="select" data-ng-model="selectedCategory" >        		
-		        <option value="Personal">Personal</option>
-		        <option value="Career">Career</option>
-		        <option value="Family">Family</option>
-		        <option value="Entertainment">Entertainment</option>
-		        <option value="">All</option>		        
-	        </select>        
-     	</div>
-     </div>
-	<br/>
-	<br/>
-
+		</div>
+		<div class="title2">	
+			<div class="selectLabel">
+				<label class="">Select Category</label>
+			</div>		
+	    	<div class="dropDown">    		
+	        	<select class="form-control" id="select" data-ng-model="selectedCategory" >        		
+			        <option value="Personal">Personal</option>
+			        <option value="Career">Career</option>
+			        <option value="Family">Family</option>
+			        <option value="Entertainment">Entertainment</option>
+			        <option value="">All</option>		        
+		        </select>        
+	     	</div>
+	     </div>
+     </div>	
+     <div class="blankSpace"></div>
 	<table class="table table-striped table-hover ">
 	  <thead class="table">
 	    <tr>
-	      <th>#</th>
-	      <th>Task Category<span class="sortOption"><input type="radio" value="category" data-ng-model="selectedSortOption" !checked></span></th>
-	      <th>Description</th>
-	      <th>Due Date<span class="sortOption"><input type="radio" value="dueDate" data-ng-model="selectedSortOption" !checked></span></th>
-	      <th>Reminder Date<span class="sortOption"><input type="radio" data-ng-model="selectedSortOption" value="reminderDate" !checked></span></th>	     	       
+	      <th class="largeScreenOnly mobileCenter">#</th>
+	      <th class="mobileCenter">Task Category<span class="sortOption"><input type="radio" value="category" data-ng-model="selectedSortOption" !checked></span></th>
+	      <th class="mobileCenter">Description</th>
+	      <th class="mobileCenter">Due Date<span class="sortOption"><input type="radio" value="dueDate" data-ng-model="selectedSortOption" !checked></span></th>
+	      <th class="largeScreenOnly mobileCenter">Reminder Date<span class="sortOption"><input type="radio" data-ng-model="selectedSortOption" value="reminderDate" !checked></span></th>	     	       
 	    </tr>
 	  </thead>
 	  <tbody>	    
 	    <tr data-ng-repeat="task in tasks | filter : selectedCategory | orderBy : selectedSortOption">
-	      <td>{{$index+1}}</td>
+	      <td class="largeScreenOnly">{{$index+1}}</td>
 	      <td>{{task.category}}</td>
 	      <td>{{task.description}}</td>
 	      <td>{{task.dueDate | date: 'yyyy-MM-dd'}}</td>
-	      <td>{{task.reminderDate | date: 'yyyy-MM-dd'}}</td>
+	      <td class="largeScreenOnly">{{task.reminderDate | date: 'yyyy-MM-dd'}}</td>
 	      <!--td><a href="#/editTask/{{task._id.$oid}}" class="btn btn-link">Edit</a></td>
 	      <td><button class="btn btn-primary" data-ng-click="deleteTask(task._id.$oid)">Delete</button></td-->
 	    </tr>	    

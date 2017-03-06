@@ -1,3 +1,7 @@
+
+body{
+  font-size: 16px;
+}
 .titleText, .row h3{
 	color: white !important;
 }
@@ -36,12 +40,77 @@ h2{
 	padding:10px;
 	border: solid 1px #ccc;
 }
+
 .sortOption{
   padding: 5px;
   margin: 5px;
   vertical-align: middle;
 }
+.blankSpace{
+  height:20px;
+}
 
+.title1, .title2{
+    width: 45%;
+    display: inline-block;    
+}
+.dropDown, .selectLabel{
+    width: 45%;
+    display: inline-block;
+} 
+
+
+/* Media queries For tablets*/
+
+@media (min-device-width: 620px) and (max-device-width: 980px) {  
+    body{
+      font-size: 12px;
+    }  
+    .titleContainer .title1{
+      width: 31%;
+      display: inline-block;
+    }     
+    .titleContainer .title2{
+      width: 50%;
+    }
+    .dropDown, .selectLabel{
+      width: 40%; 
+      display: inline-block;
+    } 
+}
+
+/* Media queries For mobiles*/
+@media (min-device-width: 320px) and (max-device-width: 619px) {      
+    .selectLabel{
+      padding: 10px 0;      
+    }
+    .title2{
+      width: 80%;
+    }
+    .dropDown, .selectLabel{
+      width: 48%; 
+      display: inline-block;
+    }
+    .largeScreenOnly{
+      display:none;
+    }
+    body{
+      font-size: 12px;
+    }
+    .mobileCenter{
+      text-align: center;
+    } 
+}
+
+@media (min-device-width: 320px) and (max-device-width: 619px) and (orientation: landscape) {
+  .title1, .title2{
+    width: 45%;
+    display: inline-block;
+  }
+  .selectLabel{
+
+  }
+}
 /* for Chart */
 
 .chart {
