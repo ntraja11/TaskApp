@@ -36,6 +36,11 @@ h2{
 	padding:10px;
 	border: solid 1px #ccc;
 }
+.sortOption{
+  padding: 5px;
+  margin: 5px;
+  vertical-align: middle;
+}
 
 /* for Chart */
 

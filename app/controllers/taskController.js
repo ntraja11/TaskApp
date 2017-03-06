@@ -8,6 +8,7 @@ angular.module("taskApp")
 		$scope.taskData = [];
 		$scope.dueDate = null;
 		$scope.reminderDate = null;
+		$scope.selectedSortOption = "";
 
 		$scope.taskCount = [0,0,0,0];				
 
@@ -76,7 +77,7 @@ angular.module("taskApp")
         	taskFactory.getTaskById($routeParams.id).then(function(data){
         		$scope.taskToEdit = data;
         	}, $scope.error);
-        }
+        }        
 
 		// function calls
 		$scope.getTasks();
