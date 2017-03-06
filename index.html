@@ -1,12 +1,45 @@
-<<!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Task App</title>
+  	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  	<link href="//cdn.rawgit.com/indrimuska/angular-moment-picker/master/dist/angular-moment-picker.min.css" rel="stylesheet">
+  	<link rel="stylesheet" href="http://bootswatch.com/readable/bootstrap.min.css">
+  	<link rel="stylesheet" href="app/css/taskStyle.css">
+  	<title>Task App</title>
 </head>
 
-<body>
-  <script src=""></script>
+<body data-ng-app="taskApp">
+
+	<!-- App Title -->
+	<nav class="navbar navbar-inverse myNavBar">
+		<div class="container-fluid navBarContainer">
+			<div class="myHeader">
+				<a class="titleText" href="#"><h2>TASK APPLICATION</h2></a>
+			</div>
+		</div>
+	</nav>
+
+	<!-- Place holder for views -->
+	<div data-ng-view=""></div>	
+  	
 </body>
+
+<!-- Third party libraries -->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.1.1/ui-bootstrap.min.js"></script>
+	<script src="app/angular-moment.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js"></script>	
+	<script src="//cdn.rawgit.com/indrimuska/angular-moment-picker/master/dist/angular-moment-picker.min.js"></script>	
+	<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+
+	<!-- App Scripts-->
+  	<script src="app/taskApp.js"></script>
+  	<script src="app/config/taskConfig.js"></script>
+  	<script src="app/controllers/taskController.js"></script>
+  	<script src="app/factory/taskFactory.js"></script>
+  	<script src="app/directives/chartDirective.js"></script>
+  	
 </html>

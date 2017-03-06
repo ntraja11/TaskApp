@@ -1,0 +1,63 @@
+.titleText, .row h3{
+	color: white !important;
+}
+h2{
+	margin-bottom: 20px;
+}
+
+.navBarContainer{
+	text-align: center;
+}
+.myHeader, .titleText{
+	clear: both !important;
+}
+.myHeader a{
+	text-decoration: none;
+}
+.myNavBar{
+	background-color: #E11F27;
+	border:none;
+}
+.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td {    
+    vertical-align: baseline !important;    
+}
+.selectLabel{
+	height: 44px;
+	padding:10px;
+}
+.table{
+	border: solid 1px #ccc;
+}
+.form-control{
+	width: 80% !important;
+}
+.form-horizontal{
+	max-width: 800px;
+	padding:10px;
+	border: solid 1px #ccc;
+}
+
+/* for Chart */
+
+.chart {
+    background: #eee;
+    padding: 15px;
+    max-width: 400px;
+}
+
+.chart div {
+  width: 20%;
+  transition: width .5s ease-out;
+  -moz-transition: width .5s ease-out;
+  -webkit-transition: width .5s ease-out;
+}
+
+.chart div {
+  font: 12px sans-serif;
+  background-color: steelblue;
+  text-align: left;
+  padding: 10px;
+  margin: 10px;
+  color: white;
+  box-shadow: 2px 2px 2px #666;
+}

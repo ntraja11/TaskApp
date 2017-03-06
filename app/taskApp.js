@@ -1,1 +1,1 @@
-angular.module("taskApp", []);
+angular.module("taskApp", ["ui.bootstrap", "ngRoute", "angularMoment", 'moment-picker']);

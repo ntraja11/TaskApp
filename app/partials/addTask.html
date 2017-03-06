@@ -1,0 +1,37 @@
+<div class="container">
+	<form class="form-horizontal">
+	  <fieldset>
+	    <legend>Add New Task</legend>	    
+	    <div class="form-group">
+	      <label for="Category" class="col-lg-3 control-label">Category</label>
+	      <div class="col-lg-9">
+	        <input type="text" class="form-control" placeholder="Category" data-ng-model="newTask.category">
+	      </div>
+	    </div>	    
+	    <div class="form-group">
+	      <label for="description" class="col-lg-3 control-label">Description</label>
+	      <div class="col-lg-9">
+	        <textarea class="form-control" rows="3" placeholder="Description" data-ng-model="newTask.description"></textarea>	        
+	      </div>
+	    </div>
+	    <div class="form-group">
+	      <label for="Due Date" class="col-lg-3 control-label">Due Date</label>
+	      <div class="col-lg-5">	      
+       		<input moment-picker="dueDate" data-ng-model="newTask.dueDate" format="DD/MM/YYYY">    		      
+	      </div>
+	    </div>
+	    <div class="form-group">
+	      <label for="Reminder Date" class="col-lg-3 control-label">Reminder Date</label>
+	      <div class="col-lg-5">	      
+       		<input moment-picker="reminderDate" data-ng-model="newTask.reminderDate" format="DD/MM/YYYY">
+	      </div>
+	    </div>	    
+	    <div class="form-group">
+	      <div class="col-lg-10 col-lg-offset-2">
+	        <button type="reset" class="btn btn-danger" data-ng-click="gotoTaskTable()">Cancel</button>
+	        <button type="submit" class="btn btn-primary" data-ng-click="addTask()">Submit</button>
+	      </div>
+	    </div>
+	  </fieldset>
+	</form>	
+</div>
