@@ -9,9 +9,9 @@ angular.module("taskApp")
 		$scope.dueDate = null;
 		$scope.reminderDate = null;
 		$scope.selectedSortOption = "";
+		$scope.categoryArray = [];
 
 		$scope.taskCount = [0,0,0,0];				
-
 		//Default value for D3 Chart
 		$scope.taskData = [{category:'Personal', value:2},{category:'Career', value:5},
         {category:'Family',value:3}, {category:'Entertainment',value:2}];
@@ -20,7 +20,8 @@ angular.module("taskApp")
 			taskFactory.getTasks().then(function(data){            	
                 $scope.tasks = data;  
                 //console.log("parameter exists " + $scope.tasks); 
-                //$scope.populateTasks();             
+                //$scope.populateTasks();                 
+                $scope.populateCategoryArray();            
             }, $scope.error);                    
 		}
 		// not using for now
@@ -39,28 +40,55 @@ angular.module("taskApp")
 			$scope.taskData = [{category:'Personal', value:$scope.taskCount[0]},{category:'Career', value:$scope.taskCount[1]},
         {category:'Family', value:$scope.taskCount[2]}, {category:'Entertainment', value:$scope.taskCount[3]}];        
 		}
+
+		$scope.populateCategoryArray = function(){						
+			angular.forEach($scope.tasks, function(task, key){
+				if(!$scope.categoryArray.length){
+					$scope.categoryArray.push(task.category);
+				}else{
+					pushCategory = false;
+					for(i=0; i < $scope.categoryArray.length; i++){					
+						if($scope.categoryArray[i] != task.category){
+							pushCategory = true;						
+						}else{
+							pushCategory = false;
+							i = $scope.categoryArray.length;
+						}						
+					}
+					if(pushCategory){
+						$scope.categoryArray.push(task.category);	
+					}
+				}		
+				//console.log("Category Array : " + $scope.categoryArray);				
+			})
+		}
+
+		// ----------------------------
 		// functio to navigate to task table view
 		$scope.gotoTaskTable = function(){
-			$scope.newTask = {};			
+			$scope.newTask = {};						
 			$location.path("#/");
 		}		
 		$scope.addTask = function(){            						
 			$scope.newTask.dueDate = $scope.dueDate;
 			$scope.newTask.reminderDate = $scope.reminderDate;			
+			console.log("selected category : " + $scope.newTask.category)
 			if($scope.newTask.category != undefined && $scope.newTask.description != undefined
 			 && $scope.newTask.dueDate != undefined && $scope.newTask.reminderDate != undefined){				
 				taskFactory.addTask($scope.newTask)
 				//.then($scope.successCall, $scope.error);            	
 			}		
         	$scope.newTask = {};
+        	$scope.categoryArray = [];
         	$scope.getTasks();
 			$location.path('#/');
-        }
+        }        
         $scope.editTask = function(){
         	taskFactory.editTask($scope.taskToEdit)
         		.then($scope.successCall, $scope.error);
         }
         $scope.successCall = function(response){        	
+        	$scope.categoryArray = [];
         	$scope.getTasks();
 			$location.path('#/');
         }
@@ -69,11 +97,11 @@ angular.module("taskApp")
         }
         // condition to check $routeParams id to get single task
         if($routeParams.id != undefined){
-        	console.log("parameter exists " + $scope.tasks);
+        	//console.log("parameter exists " + $scope.tasks);
         	angular.forEach($scope.tasks, function(task, key){
         		console.log("To Edit  : " + task);
         	})
-        	console.log(" for single task : " + $routeParams.id);
+        	//console.log(" for single task : " + $routeParams.id);
         	taskFactory.getTaskById($routeParams.id).then(function(data){
         		$scope.taskToEdit = data;
         	}, $scope.error);

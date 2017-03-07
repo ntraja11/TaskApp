@@ -25,12 +25,24 @@ h2{
 .table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td {    
     vertical-align: baseline !important;    
 }
+.table>thead>tr>th, .table>tbody>tr>td{
+  vertical-align: middle !important;
+}
 .selectLabel{
 	height: 44px;
 	padding:10px;
 }
 .table{
 	border: solid 1px #ccc;
+}
+.descriptionField{
+  width: 35% !important;  
+}
+.categoryField{
+  width: 25% !important;   
+}
+.dateField{
+    width: 17% !important;   
 }
 .form-control{
 	width: 80% !important;
@@ -54,8 +66,12 @@ h2{
     width: 45%;
     display: inline-block;    
 }
-.dropDown, .selectLabel{
+.selectLabel, .dropDown{
     width: 45%;
+    display: inline-block;
+} 
+.dropDown select{
+    width: auto !important;      
     display: inline-block;
 } 
 
@@ -73,8 +89,12 @@ h2{
     .titleContainer .title2{
       width: 50%;
     }
-    .dropDown, .selectLabel{
+    .selectLabel{
       width: 40%; 
+      display: inline-block;
+    }
+    .dropDown{
+      width: auto !important;      
       display: inline-block;
     } 
 }
@@ -86,9 +106,9 @@ h2{
     }
     .title2{
       width: 80%;
-    }
-    .dropDown, .selectLabel{
-      width: 48%; 
+    }    
+    .selectLabel{
+      width: 35%; 
       display: inline-block;
     }
     .largeScreenOnly{
@@ -103,13 +123,14 @@ h2{
 }
 
 @media (min-device-width: 320px) and (max-device-width: 619px) and (orientation: landscape) {
-  .title1, .title2{
-    width: 45%;
+  .title1{
+    width: 30%;
     display: inline-block;
   }
-  .selectLabel{
-
-  }
+  .title2{
+    width: 60%;
+    display: inline-block;
+  }  
 }
 /* for Chart */
 

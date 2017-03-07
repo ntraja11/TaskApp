@@ -8,12 +8,12 @@
 				<label class="">Select Category</label>
 			</div>		
 	    	<div class="dropDown">    		
-	        	<select class="form-control" id="select" data-ng-model="selectedCategory" >        		
-			        <option value="Personal">Personal</option>
+	        	<select class="form-control" id="select" data-ng-model="selectedCategory" data-ng-options="category for category in categoryArray" >        		
+			        <!--option value="Personal">Personal</option>
 			        <option value="Career">Career</option>
 			        <option value="Family">Family</option>
 			        <option value="Entertainment">Entertainment</option>
-			        <option value="">All</option>		        
+			        <option value="">All</option-->		        
 		        </select>        
 	     	</div>
 	     </div>
@@ -23,17 +23,17 @@
 	  <thead class="table">
 	    <tr>
 	      <th class="largeScreenOnly mobileCenter">#</th>
-	      <th class="mobileCenter">Task Category<span class="sortOption"><input type="radio" value="category" data-ng-model="selectedSortOption" !checked></span></th>
-	      <th class="mobileCenter">Description</th>
-	      <th class="mobileCenter">Due Date<span class="sortOption"><input type="radio" value="dueDate" data-ng-model="selectedSortOption" !checked></span></th>
-	      <th class="largeScreenOnly mobileCenter">Reminder Date<span class="sortOption"><input type="radio" data-ng-model="selectedSortOption" value="reminderDate" !checked></span></th>	     	       
+	      <th class="mobileCenter categoryField">Task Category<span class="sortOption"><input type="radio" value="category" data-ng-model="selectedSortOption" !checked></span></th>
+	      <th class="mobileCenter descriptionField">Description</th>
+	      <th class="mobileCenter dateField">Due Date<span class="sortOption"><input type="radio" value="dueDate" data-ng-model="selectedSortOption" !checked></span></th>
+	      <th class="largeScreenOnly dateField mobileCenter">Reminder<span class="sortOption"><input type="radio" data-ng-model="selectedSortOption" value="reminderDate" !checked></span></th>	     	       
 	    </tr>
 	  </thead>
 	  <tbody>	    
 	    <tr data-ng-repeat="task in tasks | filter : selectedCategory | orderBy : selectedSortOption">
 	      <td class="largeScreenOnly">{{$index+1}}</td>
-	      <td>{{task.category}}</td>
-	      <td>{{task.description}}</td>
+	      <td class="categoryField">{{task.category}}</td>
+	      <td class="descriptionField">{{task.description}}</td>
 	      <td>{{task.dueDate | date: 'yyyy-MM-dd'}}</td>
 	      <td class="largeScreenOnly">{{task.reminderDate | date: 'yyyy-MM-dd'}}</td>
 	      <!--td><a href="#/editTask/{{task._id.$oid}}" class="btn btn-link">Edit</a></td>
@@ -43,4 +43,5 @@
 	</table> 
 	<a href="#addTask" class="btn btn-success">Add Task</a>
 	<a href="#showChart" class="btn btn-primary">Show Chart</a>
+	<a href="#/" class="btn btn-success" data-ng-click="gotoTaskTable()">Show All</a>
 </div>

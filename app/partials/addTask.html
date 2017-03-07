@@ -5,7 +5,9 @@
 	    <div class="form-group">
 	      <label for="Category" class="col-lg-3 control-label">Category</label>
 	      <div class="col-lg-9">
-	        <input type="text" class="form-control" placeholder="Category" data-ng-model="newTask.category">
+	        <!--input type="text" class="form-control" placeholder="Category" data-ng-model="newTask.category"-->
+	        <select class="form-control" id="select" data-ng-model="newTask.category" data-ng-options="category for category in categoryArray">        				    
+	        </select>
 	      </div>
 	    </div>	    
 	    <div class="form-group">
