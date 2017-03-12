@@ -34,10 +34,10 @@
 	      <td class="largeScreenOnly">{{$index+1}}</td>
 	      <td class="categoryField">{{task.category}}</td>
 	      <td class="descriptionField">{{task.description}}</td>
-	      <td>{{task.dueDate | date: 'yyyy-MM-dd'}}</td>
-	      <td class="largeScreenOnly">{{task.reminderDate | date: 'yyyy-MM-dd'}}</td>
-	      <!--td><a href="#/editTask/{{task._id.$oid}}" class="btn btn-link">Edit</a></td>
-	      <td><button class="btn btn-primary" data-ng-click="deleteTask(task._id.$oid)">Delete</button></td-->
+	      <td>{{task.dueDate | date: 'dd/MM/yyyy'}}</td>
+	      <td class="largeScreenOnly">{{task.reminderDate | date: 'dd/MM/yyyy'}}</td>
+	      <td><a href="#/editTask/{{task._id.$oid}}" class="btn btn-link">Edit</a></td>
+	      <!--td><button class="btn btn-primary" data-ng-click="deleteTask(task._id.$oid)">Delete</button></td-->
 	    </tr>	    
 	  </tbody>
 	</table> 

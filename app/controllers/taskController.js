@@ -66,45 +66,51 @@ angular.module("taskApp")
 		// ----------------------------
 		// functio to navigate to task table view
 		$scope.gotoTaskTable = function(){
-			$scope.newTask = {};						
+			$scope.newTask = {};				
+			$scope.taskToEdit = {};	
+			$scope.categoryArray = [];	
 			$location.path("#/");
 		}		
 		$scope.addTask = function(){            						
-			$scope.newTask.dueDate = $scope.dueDate;
-			$scope.newTask.reminderDate = $scope.reminderDate;			
-			console.log("selected category : " + $scope.newTask.category)
+			$scope.newTask.dueDate = moment($scope.dueDate, "DD/MM/YYYY");
+			$scope.newTask.reminderDate = moment($scope.reminderDate, "DD/MM/YYYY");			
+			//console.log("New task date : " + $scope.newTask.dueDate);
 			if($scope.newTask.category != undefined && $scope.newTask.description != undefined
 			 && $scope.newTask.dueDate != undefined && $scope.newTask.reminderDate != undefined){				
 				taskFactory.addTask($scope.newTask)
 				//.then($scope.successCall, $scope.error);            	
-			}		
-        	$scope.newTask = {};
-        	$scope.categoryArray = [];
+			}		        	
         	$scope.getTasks();
-			$location.path('#/');
+        	$scope.gotoTaskTable();			
         }        
         $scope.editTask = function(){
         	taskFactory.editTask($scope.taskToEdit)
         		.then($scope.successCall, $scope.error);
         }
-        $scope.successCall = function(response){        	
-        	$scope.categoryArray = [];
+        $scope.successCall = function(response){        	        	
         	$scope.getTasks();
-			$location.path('#/');
+        	$scope.gotoTaskTable();			
         }
         $scope.error = function(errMsg){        	
         	console.log("Error Message : ", errMsg);
         }
         // condition to check $routeParams id to get single task
-        if($routeParams.id != undefined){
-        	//console.log("parameter exists " + $scope.tasks);
+        if($routeParams.id != undefined){        	       	
+        	taskFactory.getTasks().then(function(data){            	
+                $scope.tasks = data;                           
+                $scope.assignTaskToEdit($routeParams.id);                       
+            }, $scope.error);                            	
+        }
+
+        $scope.assignTaskToEdit = function(editId){
+        	console.log("Tasks loaded editId : " + editId);
         	angular.forEach($scope.tasks, function(task, key){
-        		console.log("To Edit  : " + task);
+        		if(task._id.$oid === editId){
+        			$scope.taskToEdit = task;        			
+        			$scope.dueDate = $scope.taskToEdit.dueDate;
+        			$scope.reminderDate = $scope.taskToEdit.reminderDate;
+        		}        		
         	})
-        	//console.log(" for single task : " + $routeParams.id);
-        	taskFactory.getTaskById($routeParams.id).then(function(data){
-        		$scope.taskToEdit = data;
-        	}, $scope.error);
         }        
 
 		// function calls

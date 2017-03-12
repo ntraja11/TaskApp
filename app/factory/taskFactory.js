@@ -14,7 +14,7 @@ angular.module("taskApp")
                     .error(function(error){                        
                         deferred.reject(error);
                     });
-                    return deferred.promise;
+                return deferred.promise;
             },
 
             addTask: function(task){                
@@ -27,20 +27,33 @@ angular.module("taskApp")
                     .error(function(error){
                         deferred.reject(error);
                     });
-                    return deferred.prosmise;
+                return deferred.prosmise;
+            },
+
+            editTask: function(task){
+                var deferred = $q.defer();                    
+
+                $http.put(url+"/"+task._id.$oid, task, config)
+                  .success(function(data){
+                    deferred.resolve(data);
+                  })
+                  .error(function(error){
+                    deferred.reject(error);
+                  });
+                return deferred.promise;
             },            
 
             getTaskById: function(id){
                 var deferred = $q.defer();
                 
-                $http.get(eUrl, config)
+                $http.get(url+"/"+ id, config)
                     .success(function(data){                                        
                         deferred.resolve(data);
                     })
                     .error(function(error){
                         deferred.reject(error);
                     });
-                    return deferred.promise;
+                return deferred.promise;
             }
         }
 });
